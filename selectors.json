@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "strategy": "ai-guided",
+    "generatedAt": "2026-03-09T00:00:00.000Z",
+    "kitId": "kit-u1",
+    "pages": ["LoginPage", "SecureAreaPage"],
+    "_warning": "SELECTORS ARE AI-INFERRED. Verify each selector against the real application before running tests."
+  },
+  "LoginPage": {
+    "usernameInput": {
+      "method": "getByLabel",
+      "selector": "Username",
+      "score": 0.75,
+      "reason": "ai-inferred — label text inferred from test case; verify label exists in DOM"
+    },
+    "passwordInput": {
+      "method": "getByLabel",
+      "selector": "Password",
+      "score": 0.75,
+      "reason": "ai-inferred — label text inferred from test case; verify label exists in DOM"
+    },
+    "loginButton": {
+      "method": "getByRole",
+      "selector": "button",
+      "name": "Login",
+      "score": 0.75,
+      "reason": "ai-inferred — role+name inferred from 'Click Login / Submit'; verify button text in DOM"
+    },
+    "flashMessage": {
+      "method": "locator",
+      "selector": "#flash",
+      "score": 0.75,
+      "reason": "ai-inferred — common pattern on practice sites; verify #flash id in DOM"
+    }
+  },
+  "SecureAreaPage": {
+    "successBanner": {
+      "method": "locator",
+      "selector": "#flash.success",
+      "score": 0.75,
+      "reason": "ai-inferred — success flash banner; verify selector in DOM"
+    },
+    "loggedInMessage": {
+      "method": "getByText",
+      "selector": "Logged in as",
+      "score": 0.75,
+      "reason": "ai-inferred — partial text from expected result 'Logged in as …'; verify text in DOM"
+    },
+    "logoutButton": {
+      "method": "getByRole",
+      "selector": "link",
+      "name": "Logout",
+      "score": 0.75,
+      "reason": "ai-inferred — common logout link on secure pages; verify role+name in DOM"
+    }
+  }
+}
