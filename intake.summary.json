@@ -1,0 +1,48 @@
+{
+  "appUrl": null,
+  "domFiles": [],
+  "strategy": "ai-guided",
+  "testStyle": "nonbdd",
+  "outputDirs": {
+    "pom":      "src/pages",
+    "nonbdd":   "tests/nonbdd",
+    "bdd":      "tests/bdd",
+    "steps":    "tests/bdd",
+    "fixtures": "src/fixtures"
+  },
+  "testCases": [
+    {
+      "id": "TC-01",
+      "title": "Successful Login (Happy Path)",
+      "tags": ["smoke"],
+      "preconditions": [
+        "User account is available on practice.expandtesting.com",
+        "Application login page is accessible"
+      ],
+      "steps": [
+        { "order": 1, "action": "navigate",  "target": "login page",     "value": "https://practice.expandtesting.com/login", "pageContext": "LoginPage" },
+        { "order": 2, "action": "fill",      "target": "username field",  "value": "{{validUser.username}}",                   "pageContext": "LoginPage" },
+        { "order": 3, "action": "fill",      "target": "password field",  "value": "{{validUser.password}}",                   "pageContext": "LoginPage" },
+        { "order": 4, "action": "click",     "target": "login button",    "value": null,                                       "pageContext": "LoginPage", "transitionTo": "SecureAreaPage" },
+        { "order": 5, "action": "assert",    "target": "page URL",        "value": "/secure",                                  "pageContext": "SecureAreaPage" },
+        { "order": 6, "action": "assert",    "target": "success message", "value": "Logged in as",                             "pageContext": "SecureAreaPage" },
+        { "order": 7, "action": "assert",    "target": "error message",   "value": "not visible",                              "pageContext": "SecureAreaPage" }
+      ],
+      "expectedResults": [
+        "URL changes to the secure area (/secure)",
+        "A success message containing 'Logged in as' is visible",
+        "No validation error messages are displayed"
+      ],
+      "pages": ["LoginPage", "SecureAreaPage"],
+      "pageTransitions": [
+        { "atStep": 4, "from": "LoginPage", "to": "SecureAreaPage" }
+      ],
+      "inputFormat": "inline-text"
+    }
+  ],
+  "warnings": [
+    "STRATEGY: ai-guided — No DOM snapshot or live URL was provided. All locators are INFERRED from test case text. Scores are capped at 0.75. Verify every selector in selectors.json against the real application before running in CI."
+  ],
+  "generatedAt": "2026-03-09T00:00:00.000Z",
+  "kitId": "kit-u1"
+}
